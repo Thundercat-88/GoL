@@ -26,7 +26,7 @@ namespace GoL
                             while (!Console.KeyAvailable)
                             {
                                 Console.WriteLine("Press ESC to stop");
-                                System.Threading.Thread.Sleep(250);
+                                System.Threading.Thread.Sleep(800);
                                 Console.WriteLine("Generation = " + generation);
                                 generation++;
                                 LC.WriteLife();
@@ -47,7 +47,7 @@ namespace GoL
                             while (!Console.KeyAvailable)
                             {
                                 Console.WriteLine("Press ESC to stop");
-                                System.Threading.Thread.Sleep(250);
+                                System.Threading.Thread.Sleep(800);
                                 Console.WriteLine("Generation = " + generation);
                                 generation++;
                                 LC.WriteLife();

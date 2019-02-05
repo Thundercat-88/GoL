@@ -10,7 +10,7 @@ namespace GoL
     {
         //Declare all variables that need to be used within the program, 
         //along with a random method and a multi dimensional array
-        int height = 10;
+        int height = 20;
         int width = 20;
         bool[,] cell;
         bool[,] nextGenCell;
@@ -62,6 +62,14 @@ namespace GoL
             cell[10, 14] = true;
         }
 
+        //Method to make the array infinate, it replaces the edge with the opposite edge
+        public void EdgeWrap(ref int x, ref int y)
+        {
+            if (x < 0) x += width;
+            else if (x > width - 1) x -= height;
+            if (y < 0) y += height;
+            else if (y > height - 1) y -= width;
+        }
         //Method to count alive cells around the main cell, ignoring the cell on [0,0] in the array
         //This method will need to be used within a for loop when drawing the game on the console
         private int AliveNeighbours(int row, int col)
@@ -69,22 +77,20 @@ namespace GoL
             int CountNeighbours = 0;
             for (int i = col - 1; i < col + 2; i++)
             {
-                for (int j = row - 1; j < row + 2; j++)
-                {
-                    //The below condition checks to see if the array positon is at 0 - if so it skips
-                    bool v = !(col < 0 || row < 0);
-                    //The below condition checks to see if the array position is greater than the height or width - if so it skips
-                    bool w = col > height || row > width;
-                    //The below condition checks to see if the array value is at 0,0 - if so it skips
-                    bool x = i == 0 && j == 0;
-
-                    if (v || w || x)                   
+               for (int j = row - 1; j < row +2; j++)
+               {                 
+                    if ((i == col) && (j == row))   
                     {
-                        if (cell[i, j] == true)
-                        {
-                            CountNeighbours++;
-                        }
-                    }                 
+                        continue;
+                    }
+                    int x1 = i;
+                    int y1 = j;
+                    //Call EdgeWrap and replace values if at edge
+                    EdgeWrap(ref x1, ref y1);
+                    if (cell[x1, y1] == true)
+                    {
+                        CountNeighbours++;
+                    }
                 }
             }
             return CountNeighbours;
@@ -104,14 +110,25 @@ namespace GoL
 
                     if (cell[i, j])
                     {                       
-                           
+                        //Underpopulation   
+                        if (alive < 2)
+                        {
+                            nextGenCell[i, j] = false;
+                        }
+                        //Next Generation
                         if (alive == 2 || alive == 3)
                         {
                             nextGenCell[i, j] = true;
                         }
-                        else
+                        //Overpopulation
+                        if (alive > 3)
                         {
-                           nextGenCell[i, j] = false;
+                            nextGenCell[i, j] = false;
+                        }
+                        //Reproduction
+                        if (cell[i, j] == false && alive == 3)
+                        {
+                           nextGenCell[i, j] = true;
                         }
                     }
                 }
@@ -125,7 +142,7 @@ namespace GoL
             {
                 for (int j = 0; j < width; j++)
                 {
-                    Console.Write(cell[i, j] ? "x" : "-");
+                    Console.Write(cell[i, j] ? " x " : " - ");
                 }
                 Console.WriteLine();              
             }          
