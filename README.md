@@ -1,23 +1,24 @@
 # GoL
 
-# An attempt at the Game of Life by Conway
+# An attempt at the Game of Life by Conway in C#
 
 # Plan
-## Constants
-- Grid
-- New Grid
-- Cell / Cells?
-- Neighbours
+## Variables
+- Array - Cell
+- Array - NextGenCell
+- Height
+- Width
 
 ## State 
-- Alive / Dead
+- Alive(true) / Dead(false)
 
 # Methods/Functions
 ## Grid
-- Create Grid
-- Clear Grid
-- Update Grid
-- Randomise Grid
+- First Generation
+- Alive Neighbours
+- Next Generation
+- WriteLife
+- UpdateLife
 
 # Other
 ## Neighbour Cell Structure in the style of Cartesian Coordinates
