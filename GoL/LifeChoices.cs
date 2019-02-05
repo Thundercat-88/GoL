@@ -31,6 +31,7 @@ namespace GoL
             {
                 gametype = 1;  // Else we assign a default value
             }
+            Console.Clear();
             return gametype;
         }
 
@@ -58,8 +59,6 @@ namespace GoL
             cell[10, 10] = true;
             cell[10, 11] = true;
             cell[10, 12] = true;
-            cell[10, 13] = true;
-            cell[10, 14] = true;
         }
 
         //Method to make the array infinate, it replaces the edge with the opposite edge
@@ -75,9 +74,9 @@ namespace GoL
         private int AliveNeighbours(int row, int col)
         {
             int CountNeighbours = 0;
-            for (int i = col - 1; i < col + 2; i++)
+            for (int i = row - 1; i < row + 2; i++)
             {
-               for (int j = row - 1; j < row +2; j++)
+               for (int j = col - 1; j < col +2; j++)
                {                 
                     if ((i == col) && (j == row))   
                     {
@@ -137,16 +136,15 @@ namespace GoL
 
         //Method to write the values in the array to the console
         public void WriteLife()
-        {                    
+        {          
             for (int i = 0; i < height; i++)
             {
                 for (int j = 0; j < width; j++)
                 {
                     Console.Write(cell[i, j] ? " x " : " - ");
                 }
-                Console.WriteLine();              
-            }          
-            Console.SetCursorPosition(0, Console.WindowTop);
+                Console.WriteLine();               
+            }
         }
 
         //Method to update the cell array with the newly generated nextGenCell array

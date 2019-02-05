@@ -25,13 +25,14 @@ namespace GoL
                             LC.RandomGeneration();
                             while (!Console.KeyAvailable)
                             {
-                                Console.WriteLine("Press ESC to stop");
+                                Console.SetCursorPosition(0, Console.WindowTop);
                                 System.Threading.Thread.Sleep(800);
-                                Console.WriteLine("Generation = " + generation);
                                 generation++;
                                 LC.WriteLife();
                                 LC.NextGeneration();
                                 LC.UpdateLife();
+                                Console.WriteLine("Generation = " + generation);
+                                Console.WriteLine("Press ESC to stop");
                             }
                         } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
 
@@ -46,13 +47,14 @@ namespace GoL
                             LC.PreGeneration();
                             while (!Console.KeyAvailable)
                             {
-                                Console.WriteLine("Press ESC to stop");
+                                Console.SetCursorPosition(0, Console.WindowTop);
                                 System.Threading.Thread.Sleep(800);
-                                Console.WriteLine("Generation = " + generation);
                                 generation++;
                                 LC.WriteLife();
                                 LC.NextGeneration();
                                 LC.UpdateLife();
+                                Console.WriteLine("Generation = " + generation);
+                                Console.WriteLine("Press ESC to stop");
                             }
                         } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
                         break;
