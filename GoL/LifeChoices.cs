@@ -71,8 +71,11 @@ namespace GoL
             {
                 for (int j = row - 1; j < row + 2; j++)
                 {
+                    //The below condition checks to see if the array positon is at 0 - if so it skips
                     bool v = !(col < 0 || row < 0);
+                    //The below condition checks to see if the array position is greater than the height or width - if so it skips
                     bool w = col > height || row > width;
+                    //The below condition checks to see if the array value is at 0,0 - if so it skips
                     bool x = i == 0 && j == 0;
 
                     if (v || w || x)                   
