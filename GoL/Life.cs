@@ -10,27 +10,26 @@ namespace GoL
     {
         static void Main(string[] args)
         {
+            //New instance of Lifechoice class
             LifeChoices LC = new LifeChoices();
 
             //Ask for type of game          
             int gametype = LC.InitialiseGame();
-
+            int generation = 0;
+            //Switch statement to configure the game board
             switch (gametype)
             {
                 case 1:
                     {
                         do
                         {
-                            int generation = 0;
+                            //This uses the random method to generate the first generation
                             LC.RandomGeneration();
                             while (!Console.KeyAvailable)
                             {
                                 Console.SetCursorPosition(0, Console.WindowTop);
-                                System.Threading.Thread.Sleep(800);
                                 generation++;
-                                LC.WriteLife();
-                                LC.NextGeneration();
-                                LC.UpdateLife();
+                                LC.GameStart();
                                 Console.WriteLine("Generation = " + generation);
                                 Console.WriteLine("Press ESC to stop");
                             }
@@ -43,24 +42,20 @@ namespace GoL
                     {
                         do
                         {
-                            int generation = 0;
+                            //This uses a pre defined array to produce a Blinker
                             LC.PreGeneration();
                             while (!Console.KeyAvailable)
                             {
                                 Console.SetCursorPosition(0, Console.WindowTop);
-                                System.Threading.Thread.Sleep(800);
                                 generation++;
-                                LC.WriteLife();
-                                LC.NextGeneration();
-                                LC.UpdateLife();
+                                LC.GameStart();
                                 Console.WriteLine("Generation = " + generation);
                                 Console.WriteLine("Press ESC to stop");
                             }
                         } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
                         break;
                     }
-            }
-            
+            }            
         }
     }
 }

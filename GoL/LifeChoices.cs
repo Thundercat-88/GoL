@@ -10,8 +10,8 @@ namespace GoL
     {
         //Declare all variables that need to be used within the program, 
         //along with a random method and a multi dimensional array
-        int height = 20;
-        int width = 20;
+        int height = 25;
+        int width = 25;
         bool[,] cell;
         bool[,] nextGenCell;
       
@@ -22,14 +22,16 @@ namespace GoL
             Console.WriteLine("1. Random game");
             Console.WriteLine("2. Pre generated game");
             int gametype;
-            ConsoleKeyInfo UserInput = Console.ReadKey(); // Get user input
+            // Get user input
+            ConsoleKeyInfo UserInput = Console.ReadKey(); 
             if (char.IsDigit(UserInput.KeyChar))
             {
-                gametype = int.Parse(UserInput.KeyChar.ToString()); // use Parse if it's a Digit
+                // Parse the input string to an integer
+                gametype = int.Parse(UserInput.KeyChar.ToString()); 
             }
             else
             {
-                gametype = 1;  // Else we assign a default value
+                gametype = 1; 
             }
             Console.Clear();
             return gametype;
@@ -62,7 +64,7 @@ namespace GoL
         }
 
         //Method to make the array infinate, it replaces the edge with the opposite edge
-        public void EdgeWrap(ref int x, ref int y)
+        private void EdgeWrap(ref int x, ref int y)
         {
             if (x < 0) x += width;
             else if (x > width - 1) x -= height;
@@ -84,7 +86,7 @@ namespace GoL
                     }
                     int x1 = i;
                     int y1 = j;
-                    //Call EdgeWrap and replace values if at edge
+                    //Call EdgeWrap and replace values if at edge of the array
                     EdgeWrap(ref x1, ref y1);
                     if (cell[x1, y1] == true)
                     {
@@ -142,7 +144,8 @@ namespace GoL
                 }
                 Console.WriteLine();               
             }
-
+            //Slow the game down to a more reasonable speed
+            System.Threading.Thread.Sleep(800);
         }
 
         //Method to update the cell array with the newly generated nextGenCell array
@@ -150,6 +153,14 @@ namespace GoL
         {
             //cell = nextGenCell;
             Array.Copy(nextGenCell, cell,cell.Length);
+        }
+
+        //This method calls the above method to start the game
+        public void GameStart()
+        {
+            WriteLife();
+            NextGeneration();
+            UpdateLife();
         }
 
     }
