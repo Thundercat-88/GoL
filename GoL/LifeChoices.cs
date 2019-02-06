@@ -106,9 +106,7 @@ namespace GoL
                 for (int j = 0; j < width; j++)
                 {
                     int alive = AliveNeighbours(i,j);
-
-                    if (cell[i, j])
-                    {                       
+                                       
                         //Underpopulation   
                         if (alive < 2)
                         {
@@ -128,8 +126,7 @@ namespace GoL
                         if (cell[i, j] == false && alive == 3)
                         {
                            nextGenCell[i, j] = true;
-                        }
-                    }
+                        }                 
                 }
             }
         }
@@ -145,6 +142,7 @@ namespace GoL
                 }
                 Console.WriteLine();               
             }
+
         }
 
         //Method to update the cell array with the newly generated nextGenCell array
