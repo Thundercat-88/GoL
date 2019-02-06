@@ -43,7 +43,24 @@ namespace GoL
                         do
                         {
                             //This uses a pre defined array to produce a Blinker
-                            LC.PreGeneration();
+                            LC.BlinkerGeneration();
+                            while (!Console.KeyAvailable)
+                            {
+                                Console.SetCursorPosition(0, Console.WindowTop);
+                                generation++;
+                                LC.GameStart();
+                                Console.WriteLine("Generation = " + generation);
+                                Console.WriteLine("Press ESC to stop");
+                            }
+                        } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
+                        break;
+                    }
+                case 3:
+                    {
+                        do
+                        {
+                            //This uses a pre defined array to produce a Glider
+                            LC.GliderGeneration();
                             while (!Console.KeyAvailable)
                             {
                                 Console.SetCursorPosition(0, Console.WindowTop);

@@ -20,7 +20,8 @@ namespace GoL
         {
             Console.WriteLine("Please select an option");
             Console.WriteLine("1. Random game");
-            Console.WriteLine("2. Pre generated game");
+            Console.WriteLine("2. Blinker");
+            Console.WriteLine("2. Glider");
             int gametype;
             // Get user input
             ConsoleKeyInfo UserInput = Console.ReadKey(); 
@@ -53,7 +54,7 @@ namespace GoL
         }
 
         //Method to fill the multi dimensional array with pre generated values
-        public void PreGeneration()
+        public void BlinkerGeneration()
         {
             cell = new bool[height, width];
             nextGenCell = new bool[height, width];
@@ -61,6 +62,19 @@ namespace GoL
             cell[10, 10] = true;
             cell[10, 11] = true;
             cell[10, 12] = true;
+        }
+
+        public void GliderGeneration()
+        {
+            cell = new bool[height, width];
+            nextGenCell = new bool[height, width];
+
+            cell[10, 10] = true;
+            cell[11, 10] = true;
+            cell[12, 10] = true;
+            cell[12, 9] = true;
+            cell[11, 8] = true;
+
         }
 
         //Method to make the array infinate, it replaces the edge with the opposite edge
