@@ -94,7 +94,7 @@ namespace GoL
             {
                for (int j = col - 1; j < col +2; j++)
                {                 
-                    if ((i == col) && (j == row))   
+                    if ((i == row) && (j == col))   
                     {
                         continue;
                     }
@@ -159,13 +159,12 @@ namespace GoL
                 Console.WriteLine();               
             }
             //Slow the game down to a more reasonable speed
-            System.Threading.Thread.Sleep(800);
+            System.Threading.Thread.Sleep(600);
         }
 
         //Method to update the cell array with the newly generated nextGenCell array
         public void UpdateLife()
         {
-            //cell = nextGenCell;
             Array.Copy(nextGenCell, cell,cell.Length);
         }
 
