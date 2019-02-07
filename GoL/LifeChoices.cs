@@ -10,6 +10,7 @@ namespace GoL
     {
         //Declare all variables that need to be used within the program, 
         //along with a random method and a multi dimensional array
+        //Values for the aray have to be equal as its a multidimensional array, and not a jagged one!
         int height = 25;
         int width = 25;
         bool[,] cell;
@@ -177,7 +178,7 @@ namespace GoL
         //Method to update the cell array with the newly generated nextGenCell array
         public void UpdateLife()
         {
-            Array.Copy(nextGenCell, cell,cell.Length);
+            Array.Copy(nextGenCell, cell,nextGenCell.Length);           
         }
 
         //This method calls the above method to start the game
