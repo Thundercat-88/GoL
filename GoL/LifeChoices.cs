@@ -80,10 +80,22 @@ namespace GoL
         //Method to make the array infinate, it replaces the edge with the opposite edge
         private void EdgeWrap(ref int x, ref int y)
         {
-            if (x < 0) x += width;
-            else if (x > width - 1) x -= height;
-            if (y < 0) y += height;
-            else if (y > height - 1) y -= width;
+            if (x < 0)
+            {
+                x += width;
+            }
+            else if (x > width - 1)
+            {
+                x -= width;
+            }
+            if (y < 0)
+            {
+                y += height;
+            }
+            else if (y > height - 1)
+            {
+                y -= height;
+            }
         }
         //Method to count alive cells around the main cell, ignoring the cell on [0,0] in the array
         //This method will need to be used within a for loop when drawing the game on the console
@@ -93,19 +105,19 @@ namespace GoL
             for (int i = row - 1; i < row + 2; i++)
             {
                for (int j = col - 1; j < col +2; j++)
-               {                 
-                    if ((i == row) && (j == col))   
-                    {
-                        continue;
-                    }
+               {
                     int x1 = i;
                     int y1 = j;
-                    //Call EdgeWrap and replace values if at edge of the array
-                    EdgeWrap(ref x1, ref y1);
-                    if (cell[x1, y1] == true)
+                    if (!((i == row) && (j == col)))   
                     {
-                        CountNeighbours++;
-                    }
+                        //Call EdgeWrap and replace values if at edge of the array
+                        EdgeWrap(ref x1, ref y1);
+                        //If the cell value is true, increment count
+                        if (cell[x1, y1] == true)
+                        {
+                            CountNeighbours++;
+                        }
+                    }                
                 }
             }
             return CountNeighbours;
