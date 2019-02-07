@@ -22,7 +22,7 @@ namespace GoL
             Console.WriteLine("Please select an option");
             Console.WriteLine("1. Random game");
             Console.WriteLine("2. Blinker");
-            Console.WriteLine("2. Glider");
+            Console.WriteLine("3. Glider");
             int gametype;
             // Get user input
             ConsoleKeyInfo UserInput = Console.ReadKey(); 
@@ -154,7 +154,7 @@ namespace GoL
                         }
                     }
                     //Reproduction
-                    if (cell[i, j] == false && alive == 3)
+                    else if (cell[i, j] == false && alive == 3)
                     {
                        nextGenCell[i, j] = true;
                     }                 
@@ -174,7 +174,7 @@ namespace GoL
                 Console.WriteLine();               
             }
             //Slow the game down to a more reasonable speed
-            System.Threading.Thread.Sleep(600);
+            System.Threading.Thread.Sleep(25);
         }
 
         //Method to update the cell array with the newly generated nextGenCell array
