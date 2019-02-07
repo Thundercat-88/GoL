@@ -135,7 +135,8 @@ namespace GoL
                 for (int j = 0; j < width; j++)
                 {
                     int alive = AliveNeighbours(i,j);
-                                       
+                    if (cell[i, j])
+                    {
                         //Underpopulation   
                         if (alive < 2)
                         {
@@ -151,11 +152,12 @@ namespace GoL
                         {
                             nextGenCell[i, j] = false;
                         }
-                        //Reproduction
-                        if (cell[i, j] == false && alive == 3)
-                        {
-                           nextGenCell[i, j] = true;
-                        }                 
+                    }
+                    //Reproduction
+                    if (cell[i, j] == false && alive == 3)
+                    {
+                       nextGenCell[i, j] = true;
+                    }                 
                 }
             }
         }
